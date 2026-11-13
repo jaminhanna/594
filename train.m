@@ -1,3 +1,5 @@
+addpath(fullfile(getenv('GUROBI_HOME'), 'matlab'));
+
 I = 1 : 4; % input neurons
 H = 5 : 9; % "candidate" hidden neurons
 O = 10 : 12; % output neurons
@@ -451,4 +453,35 @@ model.obj(:) = 0;
 model.obj(indices.h) = -1;
 model.modelsense = 'min';
 
-result = gurobi(model);
+params.LogFile = 'gurobi.log';
+params.TimeLimit = 3600;
+params.Threads = 48;
+params.Seed = 1;
+
+result = gurobi(model, params);
+
+tol = 0.5;
+
+activeHiddenNodes = H(result.x(indices.g) > tol);
+
+fprintf('Active hidden nodes: [');
+if numel(activeHiddenNodes) ~= 0
+  fprintf(' %d', activeHiddenNodes(1));
+  for i = 2 : numel(activeHiddenNodes)
+    fprintf(', %d', activeHiddenNodes(i));
+  end
+end
+fprintf(' ]\n');
+
+activeEdges = E(result.x(indices.z) > tol, :);
+
+fprintf('Active edges: [');
+if size(activeEdges, 1) ~= 0
+  activeEdge = activeEdges(1, :);
+  fprintf(' (%d, %d, %d)', activeEdge(1), activeEdge(2), activeEdge(3));
+  for i = 2 : size(activeEdges, 1)
+    activeEdge = activeEdges(i, :);
+    fprintf(', (%d, %d, %d)', activeEdge(1), activeEdge(2), activeEdge(3));
+  end
+end
+fprintf(' ]\n');
