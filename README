@@ -1,0 +1,2 @@
+Assuming you are on the ISAAC cluster here at UTK, please clone this
+repo and do "sbatch train.sh" to run the code on the iris dataset.
