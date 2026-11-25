@@ -1,0 +1,36 @@
+{
+  "categories": [
+    "0",
+    "1",
+    "2"
+  ],
+  "features": [
+    {
+      "high": 7.9,
+      "low": 4.3,
+      "type": "D"
+    },
+    {
+      "high": 4.4,
+      "low": 2.0,
+      "type": "D"
+    },
+    {
+      "high": 6.9,
+      "low": 1.0,
+      "type": "D"
+    },
+    {
+      "high": 2.5,
+      "low": 0.1,
+      "type": "D"
+    }
+  ],
+  "fitness": "macro_f1",
+  "test": true,
+  "testing_data_csv": "iris_testing_data.csv",
+  "testing_label_csv": "iris_testing_label.csv",
+  "timeseries": "regular",
+  "training_data_csv": "iris_training_data.csv",
+  "training_label_csv": "iris_training_label.csv"
+}

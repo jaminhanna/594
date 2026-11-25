@@ -1,0 +1,16 @@
+{ "timeseries": "regular",
+  "training_data_csv": "ecoli_training_data.csv",
+  "training_label_csv": "ecoli_training_label.csv",
+  "testing_data_csv": "ecoli_testing_data.csv",
+  "testing_label_csv": "ecoli_testing_label.csv",
+  "features":
+  [ {"high":0.89,"low":0.0,"type":"D"},
+    {"high":1.0,"low":0.16,"type":"D"},
+    {"high":1.0,"low":0.48,"type":"D"},
+    {"high":1.0,"low":0.5,"type":"D"},
+    {"high":0.88,"low":0.0,"type":"D"},
+    {"high":1.0,"low":0.03,"type":"D"},
+    {"high":0.99,"low":0.0,"type":"D"} ],
+  "categories": ["0","1","2","3","4","5","6","7"],
+  "fitness": "macro_f1",
+  "test": true }

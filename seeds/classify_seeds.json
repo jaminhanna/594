@@ -1,0 +1,51 @@
+{
+  "categories": [
+    "1",
+    "2",
+    "3"
+  ],
+  "features": [
+    {
+      "high": 21.18,
+      "low": 10.59,
+      "type": "D"
+    },
+    {
+      "high": 17.25,
+      "low": 12.41,
+      "type": "D"
+    },
+    {
+      "high": 0.9183,
+      "low": 0.8081,
+      "type": "D"
+    },
+    {
+      "high": 6.675,
+      "low": 4.899,
+      "type": "D"
+    },
+    {
+      "high": 4.033,
+      "low": 2.63,
+      "type": "D"
+    },
+    {
+      "high": 8.456,
+      "low": 0.7651,
+      "type": "D"
+    },
+    {
+      "high": 6.55,
+      "low": 4.519,
+      "type": "D"
+    }
+  ],
+  "fitness": "macro_f1",
+  "test": true,
+  "testing_data_csv": "seeds_testing_data.csv",
+  "testing_label_csv": "seeds_testing_label.csv",
+  "timeseries": "regular",
+  "training_data_csv": "seeds_training_data.csv",
+  "training_label_csv": "seeds_training_label.csv"
+}

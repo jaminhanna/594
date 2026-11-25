@@ -1,0 +1,1 @@
+{"default_interval":50.0,"dmax":[0.89,1.0,1.0,1.0,0.88,1.0,0.99],"dmin":[0.0,0.16,0.48,0.5,0.0,0.03,0.0],"encoders":[{"temporal":{"higher_earlier":true}}]}

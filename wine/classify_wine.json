@@ -1,0 +1,81 @@
+{
+  "categories": [
+    "0",
+    "1",
+    "2"
+  ],
+  "features": [
+    {
+      "high": 14.83,
+      "low": 11.03,
+      "type": "D"
+    },
+    {
+      "high": 5.8,
+      "low": 0.74,
+      "type": "D"
+    },
+    {
+      "high": 3.23,
+      "low": 1.36,
+      "type": "D"
+    },
+    {
+      "high": 30.0,
+      "low": 10.6,
+      "type": "D"
+    },
+    {
+      "high": 162.0,
+      "low": 70.0,
+      "type": "D"
+    },
+    {
+      "high": 3.88,
+      "low": 0.98,
+      "type": "D"
+    },
+    {
+      "high": 5.08,
+      "low": 0.34,
+      "type": "D"
+    },
+    {
+      "high": 0.66,
+      "low": 0.13,
+      "type": "D"
+    },
+    {
+      "high": 3.58,
+      "low": 0.41,
+      "type": "D"
+    },
+    {
+      "high": 13.0,
+      "low": 1.28,
+      "type": "D"
+    },
+    {
+      "high": 1.71,
+      "low": 0.48,
+      "type": "D"
+    },
+    {
+      "high": 4.0,
+      "low": 1.27,
+      "type": "D"
+    },
+    {
+      "high": 1680.0,
+      "low": 278.0,
+      "type": "D"
+    }
+  ],
+  "fitness": "macro_f1",
+  "test": true,
+  "testing_data_csv": "wine_testing_data.csv",
+  "testing_label_csv": "wine_testing_label.csv",
+  "timeseries": "regular",
+  "training_data_csv": "wine_training_data.csv",
+  "training_label_csv": "wine_training_label.csv"
+}
