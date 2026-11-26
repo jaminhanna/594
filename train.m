@@ -1,12 +1,12 @@
 % addpath(fullfile(getenv('GUROBI_HOME'), 'matlab'));
 
 I = 1 : 4; % input nodes
-H = 8 : 17; % "candidate" hidden nodes
+H = 8 : 21; % "candidate" hidden nodes
 O = 5 : 7; % output nodes
 V = sort([ I H O ]); % all nodes
 
 T = 1 : 50; % time steps
-D = 1 : 1; % possible delays
+D = 1 : 15; % possible delays
 
 numNodes = numel(V);
 numEdges = numNodes * (numNodes - 1) * numel(D);
@@ -31,8 +31,8 @@ end
 
 % Read in the dataset.
 
-spikes = readtable('iris/iris_encoded_training_data.csv');
-y = readmatrix('iris/iris_training_label.csv');
+spikes = readtable('iris_temporary_encoded_training_data.csv');
+y = readmatrix('iris_temporary_training_label.csv');
 
 numSamples = max(spikes.sample);
 
@@ -128,8 +128,7 @@ numConstraints = numConstraints + ...
 numConstraints = numConstraints + ...
   numSamples * (numClasses - 1) * numel(T);
 
-numConstraints = numConstraints + ...
-  sum(outNode(y + 1) ~= min(outNode));
+numConstraints = numConstraints + numSamples;
 
 % These help us build our constraint matrix later on
 
@@ -675,32 +674,24 @@ for n = 1 : numSamples
 
   end
 
-  if trueOutput ~= min(outNode)
+  rowIndices(index) = row;
+  colIndices(index) = hCol;
+  val(index) = 1;
 
-    rowIndices(index) = row;
-    colIndices(index) = hCol;
-    val(index) = 1;
+  index = index + 1;
 
-    index = index + 1;
+  fCol = indices.f(n, trueIndex, numel(T));
 
-    for j = 1 : numClasses
+  rowIndices(index) = row;
+  colIndices(index) = fCol;
+  val(index) = -1;
 
-      fCol = indices.f(n, j, numel(T));
+  index = index + 1;
 
-      rowIndices(index) = row;
-      colIndices(index) = fCol;
-      val(index) = -1;
+  model.rhs(row) = 0;
+  model.sense(row) = '<';
 
-      index = index + 1;
-
-    end
-
-    model.rhs(row) = 0;
-    model.sense(row) = '<';
-
-    row = row + 1;
-
-  end
+  row = row + 1;
 
 end
 
@@ -720,9 +711,10 @@ model.modelsense = 'min';
 
 params.MIPFocus = 1;
 params.TimeLimit = 82800;
-params.Threads = 48;
+params.Threads = 10;
 params.Seed = 1;
 params.OutputFlag = 1;
+params.BestObjStop = -9;
 
 result = gurobi(model, params);
 
